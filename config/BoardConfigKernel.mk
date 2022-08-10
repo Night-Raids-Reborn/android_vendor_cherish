@@ -29,16 +29,16 @@
 #   TARGET_KERNEL_CROSS_COMPILE_PREFIX_ARM32 = Compiler prefix for building vDSO32
 #   						defaults to arm-linux-androidkernel-
 #
-#   TARGET_KERNEL_CLANG_COMPILE        = Compile kernel with clang, defaults to true
-#   TARGET_KERNEL_DTBO                 = Name of the kernel Makefile target that
-#                                        generates dtbo.img. Defaults to dtbo.img
+#   TARGET_KERNEL_CLANG_COMPILE        = Compile kernel with clang, defaults to true#                                        generates dtbo.img. Defaults to dtbo.img
 #   TARGET_KERNEL_VERSION              = Reported kernel version in top level kernel
 #                                        makefile. Can be overriden in device trees
 #                                        in the event of prebuilt kernel.
-#
 #   TARGET_KERNEL_DTBO_PREFIX          = Override path prefix of TARGET_KERNEL_DTBO.
 #                                        Defaults to empty
-#
+#   TARGET_KERNEL_DTBO                 = Name of the kernel Makefile target that
+#                                        generates dtbo.img. Defaults to dtbo.img
+#   TARGET_KERNEL_DTB                  = Name of the kernel Makefile target that
+#                                        generates the *.dtb targets. Defaults to dtbs
 #   KERNEL_TOOLCHAIN_PREFIX            = Overrides TARGET_KERNEL_CROSS_COMPILE_PREFIX,
 #                                          Set this var in shell to override
 #                                          toolchain specified in BoardConfig.mk
@@ -182,6 +182,9 @@ TARGET_KERNEL_DTBO_PREFIX ?=
 TARGET_KERNEL_DTBO ?= dtbo.img
 BOARD_PREBUILT_DTBOIMAGE ?= $(TARGET_OUT_INTERMEDIATES)/DTBO_OBJ/arch/$(KERNEL_ARCH)/boot/$(TARGET_KERNEL_DTBO_PREFIX)$(TARGET_KERNEL_DTBO)
 endif
+
+# Set the default dtb target
+TARGET_KERNEL_DTB ?= dtbs
 
 # Set use the full path to the make command
 KERNEL_MAKE_CMD := $(BUILD_TOP)/prebuilts/build-tools/$(HOST_PREBUILT_TAG)/bin/make
